@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer-Facing Analytics Dashboard</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        canvas {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Customer-Facing Analytics Dashboard</h1>
+        <div class="chart-container">
+            <!-- KPI 1a - Comparison -->
+            <canvas id="kpi1aChart" width="300" height="150"></canvas>
+
+            <!-- KPI 1b - Comparison -->
+            <canvas id="kpi1bChart" width="300" height="150"></canvas>
+
+            <!-- KPI 2a - Composition -->
+            <canvas id="kpi2aChart" width="300" height="150"></canvas>
+
+            <!-- KPI 2b - Composition -->
+            <canvas id="kpi2bChart" width="300" height="150"></canvas>
+
+            <!-- KPI 3a - Distribution -->
+            <canvas id="kpi3aChart" width="300" height="150"></canvas>
+
+            <!-- KPI 3b - Composition -->
+            <canvas id="kpi3bChart" width="300" height="150"></canvas>
+
+            <!-- KPI 4a - Composition -->
+            <canvas id="kpi4aChart" width="300" height="150"></canvas>
+
+            <!-- KPI 4b - Comparison -->
+            <canvas id="kpi4bChart" width="300" height="150"></canvas>
+        </div>
+    </div>
+
+
+    <script>
+        // KPI 1a - Comparison
+        var ctx1a = document.getElementById('kpi1aChart').getContext('2d');
+        var kpi1aChart = new Chart(ctx1a, {
+            type: 'bar',
+            data: {
+                labels: ['Category 1', 'Category 2', 'Category 3'],
+                datasets: [{
+                    label: 'KPI 1a',
+                    data: [50, 75, 60],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
+                    borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // KPI 1b - Comparison
+        var ctx1b = document.getElementById('kpi1bChart').getContext('2d');
+        var kpi1bChart = new Chart(ctx1b, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [{
+                    label: 'KPI 1b',
+                    data: [10, 15, 12, 18, 14],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // KPI 2a - Composition
+        var ctx2a = document.getElementById('kpi2aChart').getContext('2d');
+        var kpi2aChart = new Chart(ctx2a, {
+            type: 'doughnut',
+            data: {
+                labels: ['Category A', 'Category B', 'Category C'],
+                datasets: [{
+                    data: [30, 50, 20],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)']
+                }]
+            }
+        });
+
+        // KPI 2b - Composition
+        var ctx2b = document.getElementById('kpi2bChart').getContext('2d');
+        var kpi2bChart = new Chart(ctx2b, {
+            type: 'radar',
+            data: {
+                labels: ['Category A', 'Category B', 'Category C', 'Category D'],
+                datasets: [{
+                    label: 'KPI 2b',
+                    data: [80, 60, 70, 90],
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: { beginAtZero: true, max: 100 }
+                }
+            }
+        });
+
+        // KPI 3a - Distribution
+        var ctx3a = document.getElementById('kpi3aChart').getContext('2d');
+        var kpi3aChart = new Chart(ctx3a, {
+            type: 'pie',
+            data: {
+                labels: ['Category X', 'Category Y', 'Category Z'],
+                datasets: [{
+                    data: [40, 30, 30],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)']
+                }]
+            }
+        });
+
+        // KPI 3b - Composition
+        var ctx3b = document.getElementById('kpi3bChart').getContext('2d');
+        var kpi3bChart = new Chart(ctx3b, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'KPI 3b',
+                    data: [20, 25, 22, 28],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // KPI 4a - Composition
+        var ctx4a = document.getElementById('kpi4aChart').getContext('2d');
+        var kpi4aChart = new Chart(ctx4a, {
+            type: 'bar',
+            data: {
+                labels: ['Product A', 'Product B', 'Product C'],
+                datasets: [{
+                    label: 'KPI 4a',
+                    data: [120, 90, 110],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)', 'rgba(255, 206, 86, 0.5)'],
+                    borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // KPI 4b - Comparison
+        var ctx4b = document.getElementById('kpi4bChart').getContext('2d');
+        var kpi4bChart = new Chart(ctx4b, {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'KPI 4b',
+                    data: [15, 18, 14, 20],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
